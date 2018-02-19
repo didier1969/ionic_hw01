@@ -3,6 +3,8 @@ import { IonicPage, MenuController, NavController, Platform } from 'ionic-angula
 
 import { TranslateService } from '@ngx-translate/core';
 
+declare var OdooApi: any;
+
 export interface Slide {
   title: string;
   description: string;
@@ -48,6 +50,29 @@ export class TutorialPage {
           }
         ];
       });
+  }
+
+  loginOdoo() {
+    var odoo_api = new OdooApi('https://proto01.stadelmann.space', 'EPS-Test-DID271117');
+    odoo_api.login('admin', '@@admin001').then(
+      function(uid) {
+        //deferred.resolve(uid);
+        console.log(uid);
+
+      },
+      function() {
+        //deferred.resolve(false);
+      }
+    );
+
+    odoo_api.search('res.partner', [['name', '!=', 'bas']]).then(
+      function(ids) {
+        //deferred.resolve(ids);
+      },
+      function() {
+        //deferred.resolve(false);
+      }
+    );
   }
 
   startApp() {
