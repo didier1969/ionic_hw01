@@ -1,0 +1,8 @@
+{
+  "name": "hw01",
+  "app_id": "ffadd536",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
